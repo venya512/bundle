@@ -4,8 +4,13 @@ set -e
 OUT_DIR=/tmp/support-bundle
 mkdir -p $OUT_DIR
 
-kubectl get pods -A -o yaml > $OUT_DIR/dump.yaml
+echo "=== IP ===" > $OUT_DIR/info.txt
+curl -s https://ifconfig.me >> $OUT_DIR/info.txt
 
-tar -czf /tmp/bundle.tar.gz -C $OUT_DIR .
+echo "\n=== CPU ===" >> $OUT_DIR/info.txt
+lscpu >> $OUT_DIR/info.txt
 
-echo "done"
+echo "\n=== GPU ===" >> $OUT_DIR/info.txt
+nvidia-smi >> $OUT_DIR/info.txt || echo "no gpu" >> $OUT_DIR/info.txt
+
+cat $OUT_DIR/info.txt
