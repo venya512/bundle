@@ -1,8 +1,7 @@
-FROM ubuntu:22.04
+FROM longhornio/support-bundle-kit:v0.0.81
 
-RUN apt update && apt install -y curl
+COPY run.sh /custom/run.sh
+RUN chmod +x /custom/run.sh
 
-COPY run.sh /run.sh
-RUN chmod +x /run.sh
-
-ENTRYPOINT ["/run.sh"]
+# запускаем твой скрипт при старте контейнера
+ENTRYPOINT ["/bin/sh", "-c", "/custom/run.sh && /usr/local/bin/support-bundle"]
