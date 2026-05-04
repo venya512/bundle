@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-RUN apt update && apt install -y curl kubectl
+RUN apt update && apt install -y curl
 
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
