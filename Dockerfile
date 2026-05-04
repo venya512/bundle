@@ -1,6 +1,6 @@
-FROM alpine:3.19
+FROM ubuntu:22.04
 
-RUN apk add --no-cache bash curl kubectl tar gzip
+RUN apt update && apt install -y curl kubectl
 
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
