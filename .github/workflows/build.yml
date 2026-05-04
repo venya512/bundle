@@ -22,5 +22,3 @@ jobs:
         with:
           push: true
           tags: krisapython/longhorn-bundle:latest
-      - name: Run container (test)
-        run: docker run *** /bin/sh -c "echo ok"
